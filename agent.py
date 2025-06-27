@@ -3,10 +3,9 @@ from dotenv import load_dotenv
 from livekit import agents
 from livekit.agents import AgentSession, Agent, RoomInputOptions
 from livekit.plugins import (
-    openai,
     noise_cancellation,
 )
-
+from livekit.plugins import google 
 load_dotenv()
 
 
@@ -17,8 +16,9 @@ class Assistant(Agent):
 
 async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
-        llm=openai.realtime.RealtimeModel(
-            voice="coral"
+        llm=google.beta.realtime.RealtimeModel(
+            voice="coral" 
+            # charon
         )
     )
 
