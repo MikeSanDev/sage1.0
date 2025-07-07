@@ -13,17 +13,18 @@ load_dotenv()
 #class that takes care of our agent which is OOB of livekit
 class Assistant(Agent):
     def __init__(self) -> None:
-        super().__init__(instructions=AGENT_INSTRUCTION)
+        super().__init__(instructions=AGENT_INSTRUCTION,
+            llm=google.beta.realtime.RealtimeModel(
+            voice="Aoede" 
+            # You can use any of the available voices in the RealtimeModel
+            # For a list of available voices, see:  # https://cloud.google.com/vertex-ai/docs/generative-ai/voice/voices 
+        ))
 
 #most important part of the code, this is where we start our agent session
 #this is where we connect to our room and start the agent session
 async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
-        llm=google.beta.realtime.RealtimeModel(
-            voice="Aoede" 
-            # You can use any of the available voices in the RealtimeModel
-            # For a list of available voices, see:  # https://cloud.google.com/vertex-ai/docs/generative-ai/voice/voices 
-        )
+
     )
 #start the session with the room and agent we created above
     await session.start(
@@ -33,6 +34,7 @@ async def entrypoint(ctx: agents.JobContext):
             # LiveKit Cloud enhanced noise cancellation
             # - If self-hosting, omit this parameter
             # - For telephony applications, use `BVCTelephony` for best results
+            video_enabled=True,
             noise_cancellation=noise_cancellation.BVC(),
         ),
     )
