@@ -21,7 +21,7 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         llm=google.beta.realtime.RealtimeModel(
             voice="Aoede",
-            temperature=0.7,
+            temperature=0.8,
             # You can use any of the available voices in the RealtimeModel
             # For a list of available voices, see:  # https://cloud.google.com/vertex-ai/docs/generative-ai/voice/voices 
         )
