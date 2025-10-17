@@ -44,27 +44,27 @@ This served as the foundation for later projects (e.g., **SAGE 1.0 Research Agen
 
 ```
 pip install -r requirements.txt
+```
 2️⃣ Set Environment Variables
+```
 Create a .env file in the project root:
-```
-
-```
 LIVEKIT_API_KEY=your_livekit_api_key
 LIVEKIT_API_SECRET=your_livekit_api_secret
 GOOGLE_API_KEY=your_google_api_key
-3️⃣ Run the Agent
-Run the worker in development or console mode:
-```
 
 ```
-python agent.py dev
-or
+
+3️⃣ Run the Agent
 ```
+Run the worker in development or console mode:
+python agent.py dev
+```
+or
 
 ```
 python agent.py console
-The agent will connect to your LiveKit room, initialize the AI voice, and begin listening for input.
 ```
+The agent will connect to your LiveKit room, initialize the AI voice, and begin listening for input.
 
 🎯 Accomplishments
 - Built a functioning voice-activated AI agent.
